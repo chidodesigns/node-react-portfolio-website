@@ -60,3 +60,29 @@
     border-radius: 10px;
     font-size: 16px;
 }
+
+@media screen and (max-width:480px) {
+
+    .writeImg, .writeFormGroup{
+        margin-left: 0;
+    }
+
+    .writeFormGroup{
+        width: 100%;
+    }
+
+    .writeImg, .writeInput{
+        width: 100vw;
+    }
+
+    .writeText{
+        height: 50vh;
+        margin-bottom: 20%;
+    }
+
+    .writeSubmit{
+        top: 100vh;
+        left: 4vw;
+    }
+
+}
