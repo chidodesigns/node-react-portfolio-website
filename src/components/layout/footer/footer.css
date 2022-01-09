@@ -1,0 +1,64 @@
+.footer-top{
+    width: 100%;
+    height: 50px;
+    background-color: white;
+    position: fixed; 
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    font-family: "Josefin Sans", sans-serif;
+     /* z-index: 999;  */
+}
+
+.footer-topLeft, .footer-topRight {
+    flex: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer-bottomCenter{
+    flex: 6;
+    text-align: center;
+}
+
+.footer-topIcon{
+    font-size: 20px;
+    margin-right: 10px;
+    color: #444;
+    cursor: pointer;
+}
+
+.footer-topImg{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.footer-topList{
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.footer-topListItem{
+    margin-right: 20px;
+    font-size: 18px;
+    font-weight: 300;
+    cursor: pointer;
+}
+
+.footer-topSearchIcon{
+    font-size: 18px;
+    color: #666;
+    cursor: pointer;
+    margin-left: 15px;
+}
+
+/* @@todo Make this mobile responsive */
+
+
+ 
