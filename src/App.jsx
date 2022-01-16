@@ -5,7 +5,6 @@ import { ThemeContext } from "./context";
 //  Components
 import Footer from "./components/layout/footer/Footer";
 import Header from "./components/layout/header/Header";
-import Toggle from "./components/toggle/Toggle";
 
 //  Pages
 import Blog from "./pages/blog/Blog";
@@ -13,6 +12,7 @@ import Settings from "./pages/settings/Settings";
 import SinglePost from "./pages/singlePost/SinglePost";
 import Write from "./pages/write/Write";
 import Home from "./pages/home/Home";
+import Login from "./pages/login/Login"
 
 const App = () => {
   //  Test User Data
@@ -29,7 +29,6 @@ const App = () => {
         }}
       >
         <Header />
-        <Toggle />
         <Switch>
           <Route exact path="/">
             <Home />
@@ -49,6 +48,9 @@ const App = () => {
 
           <Route exact path="/settings">
           {user ?  <Settings/> : <Home/>}
+          </Route>
+          <Route exact path="/login">
+          {user ? <Login/> : <Home/>}
           </Route>
         </Switch>
         <Footer />

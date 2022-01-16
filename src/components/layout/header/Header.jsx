@@ -1,6 +1,8 @@
 import { useContext } from "react";
+import React, {useState} from "react";
 import { ThemeContext } from "../../../context";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import Toggle from "../../toggle/Toggle"
 import "./header.css";
 
 function Header() {
@@ -8,66 +10,65 @@ function Header() {
   const user = true;
   const theme = useContext(ThemeContext);
   const darkMode = theme.state.darkMode;
+  const [click, setClick] = useState(false)
+  const handleClick  = () => setClick(!click)
 
   return (
-    <div className="top" style={{ color: darkMode && "#222" }}>
-      <div className="topLeft">
-        <i className="topIcon fab fa-linkedin"></i>
-        <i className="topIcon fab fa-twitter-square"></i>
-        <i className="topIcon fab fa-github-square"></i>
-      </div>
-      <div className="topCenter">
-        <ul className="topList">
-          <li className="topListItem">
-            <Link to="/" className="link">
-              HOME
-            </Link>
-          </li>
-          <li className="topListItem">
-            <Link to="/blog" className="link">
-              BLOG
-            </Link>
-          </li>
-          <li className="topListItem">
-            <Link to="/portfolio" className="link">
-              PORTFOLIO
-            </Link>
-          </li>
-          <li className="topListItem">
-            {user && (
-               <Link to="/write" className="link">
-               WRITE
-             </Link>
-            )}
-          </li>
-          <li className="topListItem">
-            {user && (
-               <Link to="/settings" className="link">
-               SETTINGS
-             </Link>
-            )}
-          </li>
-        </ul>
-      </div>
-      <div className="topRight">
-        {user && (
-        <img
-          className="topImg"
-          src="https://avatars.githubusercontent.com/u/22502303?v=4"
-          alt=""
-        />
-        )
-        }
-        {user && (
-           <ul className="topList">
-           <li className="topListItem">LOGIN</li>
-           <li className="topListItem">LOGOUT</li>
-         </ul>
-        )}
-        <i className=" topSearchIcon fas fa-search"></i>
-      </div>
-
-    </div>
+  
+      <nav className="navbar" style={{ color: darkMode && "#222" }}>
+        <div className="nav-container">
+          <NavLink exact to="/" className="nav-logo">
+            ChidoDesigns
+          </NavLink>
+          <ul className={click ? "nav-menu active" : "nav-menu"}>
+            <li className="nav-item">
+              <NavLink exact to="/" activeClassName="active" className="nav-links" onClick={handleClick}>
+                Home
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink exact to="/blog" activeClassName="active" className="nav-links" onClick={handleClick}>
+                Blog
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink exact to="/portfolio" activeClassName="active" className="nav-links" onClick={handleClick}>
+                Portfolio
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink exact to="/write" activeClassName="active" className="nav-links" onClick={handleClick}>
+                Write
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink exact to="/settings" activeClassName="active" className="nav-links" onClick={handleClick}>
+                Settings
+              </NavLink>
+            </li>
+            {user &&
+            <li className="nav-item">
+              <NavLink exact to="/login" activeClassName="active" className="nav-links" onClick={handleClick}>
+                Login
+              </NavLink>
+            </li>
+            }
+            {user &&
+            <li className="nav-item">
+              <NavLink exact to="/logout" activeClassName="active" className="nav-links" onClick={handleClick}>
+                Logout
+              </NavLink>
+            </li>
+            }
+            <li className="nav-item nav-links">
+            <Toggle/>
+            </li>
+          </ul>
+          <div className="nav-icon" onClick={handleClick}>
+              <i className={click ? "fas fa-times" : "fas fa-bars"}></i>
+          </div>
+        </div>
+      </nav>
   );
 }
 
